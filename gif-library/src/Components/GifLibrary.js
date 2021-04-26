@@ -1,11 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './styles.css';
-// import GifPlayer from 'react-gif-player';
-// import {
-//     Grid
-//   } from "@giphy/react-components";
-//   import { imagesLoaded } from 'imagesloaded';
+import Masonry from 'react-masonry-css';
 
 export default class GifLibrary extends React.Component {
   state = {
@@ -21,53 +17,36 @@ export default class GifLibrary extends React.Component {
             gifs: res.data
         })
     })
-    // this.resizeAllGridItems();
-    // window.addEventListener("resize", this.resizeAllGridItems());
-    // let allItems = document.getElementsByClassName("gif");
-    // console.log(allItems,"allItems")
-    // for(let x=0; x<allItems.length; x++){
-    // imagesLoaded( allItems[x], this.resizeInstance());
-// }
+    const grid = document.getElementsByClassName('grid');
+    console.log(grid,"grid")
+    const masonry = new Masonry(grid, {
+        itemSelector: '.grid-item',
+        gutter: 10,
+    });
   }
-
-//   resizeGridItem = (item) => {
-//     console.log(item,"item")
-//     let grid = document.getElementsByClassName("layout")[0];
-//     let rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-//     let rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-//     let rowSpan = Math.ceil((document.querySelector('.item').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
-//     // item.style.gridRowEnd = "span "+ rowSpan;
-//  }
-
-//  resizeAllGridItems= () => {
-//     let allItems = document.getElementsByClassName("item");
-//     // console.log(allItems,"allItems")
-//     for(let x=0; x<allItems.length; x++){
-//        this.resizeGridItem(allItems[x]);
-//     }
-//  }
-
-// resizeInstance = (instance) => {
-//     console.log(instance, "instance")
-// 	// let item = instance.state.gifs && instance.state.gifs.data && instance.state.gifs.data[0];
-//     // this.resizeGridItem(item);
-// }
 
   render() {
       const { gifs } = this.state;
-    //   console.log(gifs,"gifs")
+      console.log(gifs,"gifs")
+      const breakPoints = {
+          default: 4,
+          1100: 2,
+          700: 1
+      }
     return (
-        <div  className="layout">
+            <Masonry
+            breakpointCols={breakPoints}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+            >
             {gifs && gifs.data && gifs.data.length > 0 && gifs.data.map((gif, index) => {
                 return(
-                        <div className="item">
-                            <div className="content">
-                                <img src={gif.images.original.webp} className = "gif" alt="Powered By GIPHY"/>
-                            </div>
+                        <div>
+                            <img src={gif.images.original.webp} height = {gif.images.original.height} className="gif" alt="Powered By GIPHY"/>
                         </div>
                 )
             })}
-            </div>
+            </Masonry>
     )
   }
 }

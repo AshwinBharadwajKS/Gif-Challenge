@@ -9,3 +9,17 @@
     padding: 5px;
     box-sizing: border-box;
 }
+.my-masonry-grid {
+    display: -webkit-box;
+    display: -ms-flexbox; 
+    display: flex;
+    width: auto;
+  }
+  .my-masonry-grid_column {
+    background-clip: padding-box;
+  }
+  
+  .my-masonry-grid_column > div { 
+    margin-bottom: 5px;
+  }
+  
