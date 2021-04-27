@@ -1,8 +1,16 @@
-.layout {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-    grid-auto-flow: dense;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gifContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.searchField {
+    display: flex;
+    margin-bottom: 20px;
 }
 .gif {
     width: 100%;
@@ -14,12 +22,67 @@
     display: -ms-flexbox; 
     display: flex;
     width: auto;
-  }
-  .my-masonry-grid_column {
+}
+.my-masonry-grid_column {
     background-clip: padding-box;
-  }
+}
   
-  .my-masonry-grid_column > div { 
+.my-masonry-grid_column > div { 
     margin-bottom: 5px;
-  }
+}
+.paginate {
+    display:'flex';
+    justify-content:'center';
+    align-items: 'center';
+    color:'#4776E6';
+} 
+.ul.pagination {
+	text-align: center;
+	padding-left: 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+}
+
+ul.pagination li {
+	display: inline-block;
+}
+
+.pagination li {
+	padding: 0px !important;
+}
+
+.pagination .disabled > a {
+	cursor: not-allowed;
+}
+
+.pagination > li > a {
+	position: relative;
+	float: left;
+	padding: 6px 12px;
+	line-height: 1.42857143;
+	text-decoration: none;
+	color: #4776e6;
+	border-radius: 50px;
+	margin-left: -1px;
+	outline: none;
+	cursor: pointer;
+}
+
+.pagination > li.selected > a {
+	outline: none;
+	border: 0px;
+	background-color: #4776e6;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+}
+
+.paginationElipsis {
+	color: #4776e6;
+}
   
